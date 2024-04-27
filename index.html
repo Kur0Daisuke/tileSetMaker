@@ -15,7 +15,7 @@
             <div class="canvasScreen" slot="start" style="height: 100%;width: 100%;">
                 <canvas class="editor"></canvas>
             </div>
-            <sl-tab-group slot="end" style="height: 100%;width: 100%;" class="tab">
+            <sl-tab-group slot="end" style="height: 100%;width: 80%;" class="tab">
                 <sl-tab slot="nav" panel="tiles">Tiles</sl-tab>
                 <sl-tab slot="nav" panel="inspect">Inspector</sl-tab>
                 <sl-tab slot="nav" panel="export">Export</sl-tab>    
@@ -31,12 +31,13 @@
                 </sl-tab-panel>
                 <sl-tab-panel name="inspect" style="--padding:10px">
                     <div class="inspect InputPage">
+                        <img src="/images/idk.jpg" id="tileImage" alt="bruh choose sum'in">
                         <b>Properties of Selected Tile</b>
                         <hr>
                         <p>x position : <sl-input type="number" id="x" disabled placeholder="x" size="small"></sl-input></p>
                         <p>y position : <sl-input type="number" id="y" disabled placeholder="y" size="small"></sl-input></p>
                         <br>
-                        <img src="" id="tileImage">
+                        
                     </div>
                 </sl-tab-panel>
                 <sl-tab-panel name="export" style="--padding:10px">This is the custom tab panel.</sl-tab-panel>

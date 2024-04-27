@@ -102,9 +102,12 @@ function draw() {
     ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
     tilectx.fillStyle = "rgba(0, 0, 0, 0.4)";
 
-    currentScreen.classList.contains("editor") ? 
-    ctx.fillRect(cursorToOutline.x, cursorToOutline.y, step, step) : 
-    tilectx.fillRect(cursorToOutline.x, cursorToOutline.y, step, step);
+    if(!select) {
+        currentScreen.classList.contains("editor") ? 
+        ctx.fillRect(cursorToOutline.x, cursorToOutline.y, step, step) : 
+        tile !== null && tilectx.fillRect(cursorToOutline.x, cursorToOutline.y, step, step);
+    }
+    
 
     ctx.fillStyle = "rgba(0, 0, 0, 1)";
     ctx.fillText(debugMessage, 
@@ -170,18 +173,17 @@ canvas.addEventListener("mousedown", e => {
 
                 if(posX == mouseX && posY == mouseY) {
                     document.querySelector(".tab").show("inspect")
-                    document.getElementById("x").value = placedTiles[i].pos.x;
-                    document.getElementById("y").value = placedTiles[i].pos.y;
-                    let imageData = ctx.getImageData(placedTiles[i].pos.x, placedTiles[i].pos.y, step, step)
-                    let canvas = document.createElement('canvas');
-                    // with the correct size
-                    canvas.width = 32;
-                    canvas.height = 32;
-                    // put there raw image data
-                    // expected to be faster as tere are no scaling, etc
-                    canvas.getContext('2d').putImageData(imageData, 0, 0);
-                    // get image data (encoded as bas64)
-                    result = canvas.toDataURL("image/jpeg", 1.0)
+                    document.getElementById("x").value = posX;
+                    document.getElementById("y").value = posY;
+                    let tempcanvas = document.createElement('canvas');
+                    tempcanvas.width = 32;
+                    tempcanvas.height = 32;
+                    tempcanvas.getContext('2d').drawImage(tile, 
+                        placedTiles[i].tile.x*32, placedTiles[i].tile.y*32, 
+                        32, 32, 
+                        0, 0, 
+                        step, step);
+                    result = tempcanvas.toDataURL("image/jpeg")
                     document.getElementById("tileImage").src = result
                     break;
                 }
