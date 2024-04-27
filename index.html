@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TileSet Maker</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css" />
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
+</head>
+<body>
+    <div class="screen">
+        <sl-split-panel class="editorScreen" position="75" style="--min: 200px; --max: calc(100% - 200px)">
+            <div class="canvasScreen" slot="start" style="height: 100%;width: 100%;">
+                <canvas class="editor"></canvas>
+            </div>
+            <sl-tab-group slot="end" style="height: 100%;width: 100%;" class="tab">
+                <sl-tab slot="nav" panel="tiles">Tiles</sl-tab>
+                <sl-tab slot="nav" panel="inspect">Inspector</sl-tab>
+                <sl-tab slot="nav" panel="export">Export</sl-tab>    
+                
+                <sl-tab-panel name="tiles" style="--padding:10px">
+                    <div class="InputPage">
+                        <b>Choose a tileset</b> <br>
+                        <sl-input type="number" id="tileW" placeholder="tileWidth" size="small"></sl-input>
+                        <sl-input type="number" id="tileH" placeholder="tileHeight" size="small"></sl-input>
+                        <input type="file" accept="image/*" name="tile" id="tileSelect">
+                        <canvas class="tiles"></canvas>
+                    </div>
+                </sl-tab-panel>
+                <sl-tab-panel name="inspect" style="--padding:10px">
+                    <div class="inspect InputPage">
+                        <b>Properties of Selected Tile</b>
+                        <hr>
+                        <p>x position : <sl-input type="number" id="x" disabled placeholder="x" size="small"></sl-input></p>
+                        <p>y position : <sl-input type="number" id="y" disabled placeholder="y" size="small"></sl-input></p>
+                        <br>
+                        <img src="" id="tileImage">
+                    </div>
+                </sl-tab-panel>
+                <sl-tab-panel name="export" style="--padding:10px">This is the custom tab panel.</sl-tab-panel>
+            </sl-tab-group>
+        </sl-split-panel>
+
+        <sl-button-group label="History" class="menu">
+            <sl-tooltip content="select (i)">
+                <sl-button onclick="SetTool('select')"><sl-icon name="cursor"></sl-button>
+            </sl-tooltip>
+            <sl-tooltip content="brush (p)">
+              <sl-button onclick="SetTool('paint')"><sl-icon name="brush"></sl-icon></sl-icon></sl-button>
+            </sl-tooltip>
+            <sl-tooltip content="eraser (e)">
+              <sl-button onclick="SetTool('eraser')"><sl-icon name="eraser"></sl-icon></sl-button>
+            </sl-tooltip>
+            <sl-tooltip content="move (space)">
+                <sl-button onclick="SetTool('move')"><sl-icon name="hand-index-thumb"></sl-button>
+            </sl-tooltip>
+        </sl-button-group>
+        
+        
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

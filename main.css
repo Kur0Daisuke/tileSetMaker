@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    overflow: hidden;
+}
+
+.screen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+}
+
+.editor{
+    width: 100%;
+    height: 100%;
+}
+
+.menu{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+sl-menu-item, sl-menu-label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editorScreen{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.page{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.selectPage{
+    display: none;
+    opacity: 0;
+}
+
+.selectPage.on{
+    opacity: 100%;
+}
+
+.InputPage{
+    width: 50%;
+}
